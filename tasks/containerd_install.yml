@@ -1,0 +1,56 @@
+---
+# - name: Get version
+#   get_url:
+#     url: https://api.github.com/repos/containerd/containerd/releases
+#     headers:
+#       Accept: application/vnd.github.v3+json
+#   register: version
+
+- name: Get Containerd
+  get_url:
+    url: "https://github.com/containerd/containerd/releases/download/v{{ containerd.version }}/containerd-{{ containerd.version }}-linux-amd64.tar.gz"
+    dest: /tmp/containerd.tar.gz
+
+- name: Uncompress test
+  ansible.builtin.unarchive:
+    src: /tmp/containerd.tar.gz
+    dest: /usr/
+    remote_src: yes
+
+- name: Create conf directory
+  ansible.builtin.file:
+    path: /etc/containerd
+    state: directory
+    mode: 0755
+ 
+- name: Create conf directory
+  ansible.builtin.file:
+    path: /etc/containerd
+    state: directory
+    mode: 0755
+
+- name: Template for Containerd Config
+  ansible.builtin.template:
+    src: containerd.toml.j2
+    dest: /etc/containerd/config.toml
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Template for Networking Config
+  ansible.builtin.template:
+    src: 99-kubernetes-cri.conf.j2
+    dest: /etc/sysctl.d/99-kubernetes-cri.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Template for Containerd Service
+  ansible.builtin.template:
+    src: containerd.service.j2
+    dest: /etc/systemd/system/containerd.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Containerd Service Enable
+
