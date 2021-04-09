@@ -23,11 +23,21 @@
     state: directory
     mode: 0755
  
-- name: Create conf directory
+- name: Create file module conf
   ansible.builtin.file:
-    path: /etc/containerd
-    state: directory
-    mode: 0755
+    path: "{{ containerd.files.module_load }}"
+    state: touch
+    mode: 0644
+  changed_when: False
+
+- name: Ensure modules loads are in file
+  lineinfile:
+    path: "{{ containerd.files.module_load }}"
+    state: present
+    regexp: '^{{ item }}.*'
+    line: "{{ item }}"
+  with_items: "{{ k8s.kernel.modules }}"
+
 
 - name: Template for Containerd Config
   ansible.builtin.template:
@@ -40,7 +50,7 @@
 - name: Template for Networking Config
   ansible.builtin.template:
     src: 99-kubernetes-cri.conf.j2
-    dest: /etc/sysctl.d/99-kubernetes-cri.conf
+    dest: "{{ containerd.files.sysctl_bridge }}"
     owner: root
     group: root
     mode: '0644'

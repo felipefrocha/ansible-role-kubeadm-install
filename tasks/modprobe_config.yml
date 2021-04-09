@@ -5,7 +5,7 @@
     state: present
   with_items: "{{ k8s.kernel.modules }}"
 
-- name: Ensure k8s config modules loads
+- name: Create file module conf
   ansible.builtin.file:
     path: "{{ k8s.files.module_load }}"
     state: touch
@@ -20,16 +20,16 @@
     line: "{{ item }}"
   with_items: "{{ k8s.kernel.modules }}"
 
-- name: Ensure k8s config sysctl.d
+- name: Create file sysctl.d config
   ansible.builtin.file:
     path: "{{ k8s.files.sysctl_bridge }}"
     state: touch
     mode: 0644
   changed_when: False
 
-- name: Ensure modules loads are in file
+- name: Ensure net configs are in file
   lineinfile:
-    path: "{{ k8s.files.module_load }}"
+    path: "{{ k8s.files.sysctl_bridge }}"
     state: present
     regexp: '^{{ item }}.*'
     line: "{{ item }}"
