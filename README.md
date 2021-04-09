@@ -1,13 +1,24 @@
-Role Name
+Kubeadm
 =========
 
-A brief description of the role goes here.
+This role intents to create a initial configuration for a Ubuntu server with `kubeadm` 
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+To test this role we are using [Molecule](https://molecule.readthedocs.io/) &reg. So you should configure your machine to be able to useit.
+Another requirements if there is any will be describe in two files:
+* requirements.yml
+* requirements.txt
+  
+The first one should be installed with `pip3` this will install any `python3` dependencies and will be also described in `Makefile`.
 
+The secont one should be installed with `ansible-galaxy` and probabily will be if you use `make`.
+
+### Docs in progress
+
+<!-- TODO - finish the docs latter -->
+<!-- 
 Role Variables
 --------------
 
@@ -35,4 +46,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+An optional section for the role authors to include contact information, or a website (HTML is not allowed). -->

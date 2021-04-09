@@ -1,2 +1,13 @@
 ---
 # tasks file for kubeadm_install
+- name: Install Kernel Modules
+  include_tasks: modprobe_config.yml
+
+- name: Install containerd
+  include_tasks: containerd_install.yml
+
+- name: Install CNI and CRI
+  include_tasks: cxi_install.yml
+
+- name: Install kubeadm
+  include_tasks: kubeadm_install.yml

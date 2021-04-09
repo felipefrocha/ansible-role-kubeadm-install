@@ -1,2 +1,44 @@
 ---
 # defaults file for kubeadm_install
+k8s:
+  kernel:
+    modules:
+      - br_netfilter
+      - overlay
+
+  release_url: https://dl.k8s.io/release/stable.txt
+
+  kubelet:
+    version: v0.4.0
+    url: "https://raw.githubusercontent.com/kubernetes/release/"
+    folder: /etc/systemd/system/
+
+  kubeadm:
+    version: v0.4.0
+    url: "https://raw.githubusercontent.com/kubernetes/release/"
+    folder: /etc/systemd/system/kubelet.service.d/
+
+  cni:
+    folder: /opt/cni/bin
+    version: v0.8.2
+    url: https://github.com/containernetworking/plugins/releases/download/
+  cri:
+    folder: /usr/local/bin
+    version: v1.17.0
+    url: https://github.com/kubernetes-sigs/cri-tools/releases/download/
+
+  files:
+    module_load: /etc/modules-load.d/k8s.conf
+    sysctl_bridge: /etc/sysctl.d/k8s.conf
+    
+  network_config:
+    - net.bridge.bridge-nf-call-ip6tables = 1
+    - net.bridge.bridge-nf-call-iptables = 1
+
+hostname:
+  name: testserver
+
+
+containerd:
+  enabled: True
+  version: 1.4.4
