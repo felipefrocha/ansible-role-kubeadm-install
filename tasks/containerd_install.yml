@@ -38,7 +38,6 @@
     line: "{{ item }}"
   with_items: "{{ k8s.kernel.modules }}"
 
-
 - name: Template for Containerd Config
   ansible.builtin.template:
     src: containerd.toml.j2
