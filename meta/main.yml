@@ -23,5 +23,5 @@ galaxy_info:
 
 dependencies: 
   - src: https://github.com/felipefrocha/ansible-role-ubuntu-update
-    version: master
+    version: main
     name: ubuntu_update
