@@ -44,4 +44,5 @@
     name: kubelet.service
     state: started
     daemon_reload: yes
+    daemon_reexec: yes
     enabled: yes
