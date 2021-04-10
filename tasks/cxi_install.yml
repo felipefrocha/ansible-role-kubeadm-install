@@ -10,7 +10,7 @@
     url: "{{ k8s.cni.url }}{{ k8s.cni.version }}/cni-plugins-linux-amd64-{{ k8s.cni.version }}.tgz"
     dest: /tmp/cni.tar.gz
 
-- name: Uncompress cni
+- name: Uncompress CNI
   ansible.builtin.unarchive:
     src: /tmp/cni.tar.gz
     dest: "{{ k8s.cni.folder }}"
@@ -22,12 +22,12 @@
     state: directory
     mode: 0755
 
-- name: Get CNI
+- name: Get CRI
   get_url:
     url: "{{ k8s.cri.url }}{{ k8s.cri.version }}/crictl-{{ k8s.cri.version }}-linux-amd64.tar.gz"
     dest: /tmp/cri.tar.gz
 
-- name: Uncompress cni
+- name: Uncompress CRI
   ansible.builtin.unarchive:
     src: /tmp/cri.tar.gz
     dest: "{{ k8s.cri.folder }}"

@@ -39,4 +39,9 @@
     mode: 0644
   notify: Kubelet Service Enable
 
-    
+- name: Kubelet Service Enable
+  ansible.builtin.systemd:
+    name: kubelet.service
+    state: started
+    daemon_reload: yes
+    enabled: yes

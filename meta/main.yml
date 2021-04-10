@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: microk8s_install
+  role_name: kubeadm_install
   author: Felipe Rocha
   description: Install and preconfigure microk8s
   company: Raipe Systems
@@ -22,6 +22,6 @@ galaxy_info:
     - configure
 
 dependencies: 
-  - src: https://github.com/felipefrocha/ansible-role-ubuntu-update
+  - src: https://github.com/felipefrocha/ansible-role-ubuntu-update.git
     version: main
     name: ubuntu_update

@@ -63,3 +63,9 @@
     mode: 0755
   notify: Containerd Service Enable
 
+- name: Containerd Service Enable
+  ansible.builtin.systemd:
+    name: containerd.service
+    state: started
+    daemon_reload: yes
+    enabled: yes
