@@ -29,7 +29,7 @@
 - name: Get Kube -> adm, let and ctl
   get_url:
     url: "{{ k8s.kubeadm.url }}{{ k8s.kubeadm.version }}/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf"
-    dest: "{{ k8s.kubelet.folder }}"
+    dest: "{{ k8s.kubeadm.folder }}"
     mode: 0644 
 
 - name: Connect to website using a previously stored cookie
