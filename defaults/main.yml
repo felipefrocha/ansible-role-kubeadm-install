@@ -9,22 +9,22 @@ k8s:
   release_url: https://dl.k8s.io/release/stable.txt
 
   kubelet:
-    version: v0.4.0
+    version: v0.8.0
     url: "https://raw.githubusercontent.com/kubernetes/release/"
     folder: /etc/systemd/system/
 
   kubeadm:
-    version: v0.4.0
+    version: v0.8.0
     url: "https://raw.githubusercontent.com/kubernetes/release/"
     folder: /etc/systemd/system/kubelet.service.d/
 
   cni:
     folder: /opt/cni/bin
-    version: v0.8.2
+    version: v0.9.1
     url: https://github.com/containernetworking/plugins/releases/download/
   cri:
     folder: /usr/local/bin
-    version: v1.17.0
+    version: v1.21.0
     url: https://github.com/kubernetes-sigs/cri-tools/releases/download/
 
   files:

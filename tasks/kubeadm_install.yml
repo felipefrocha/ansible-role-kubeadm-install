@@ -37,12 +37,11 @@
     url: "{{ k8s.kubelet.url }}{{ k8s.kubelet.version }}/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service"
     dest: "{{ k8s.kubelet.folder }}"
     mode: 0644
-  notify: Kubelet Service Enable
 
 - name: Kubelet Service Enable
   ansible.builtin.systemd:
     name: kubelet.service
-    state: started
     daemon_reload: yes
     daemon_reexec: yes
     enabled: yes
+
