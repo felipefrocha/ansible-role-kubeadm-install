@@ -43,7 +43,7 @@ containerd:
     module_load: /etc/modules-load.d/containerd.conf
     sysctl_bridge: /etc/sysctl.d/99-kubernetes-cri.conf
 
-packege:
+package:
   enabled: True
 
 hostname:
