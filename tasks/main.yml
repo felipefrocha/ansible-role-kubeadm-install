@@ -6,8 +6,9 @@
 - name: Install containerd
   include_tasks: containerd_install.yml
 
-# - name: Install CNI and CRI
-#   include_tasks: cxi_install.yml
+- name: Install CNI and CRI
+  include_tasks: cxi_install.yml
+  when: not package.enabled
 
 - name: Install kubeadm
   include_tasks: kubeadm_install.yml

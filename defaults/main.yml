@@ -3,8 +3,8 @@
 k8s:
   kernel:
     modules:
-      - br_netfilter
       - overlay
+      - br_netfilter
 
   release_url: https://dl.k8s.io/release/stable.txt
 
@@ -33,15 +33,19 @@ k8s:
     
   network_config:
     - net.bridge.bridge-nf-call-ip6tables = 1
-    - net.bridge.bridge-nf-call-iptables = 1
-
-hostname:
-  name: testserver
-
-
+    - net.bridge.bridge-nf-call-iptables  = 1
+    - net.ipv4.ip_forward                 = 1
+     
 containerd:
   enabled: True
   version: 1.4.4
   files:
     module_load: /etc/modules-load.d/containerd.conf
     sysctl_bridge: /etc/sysctl.d/99-kubernetes-cri.conf
+
+packege:
+  enabled: True
+
+hostname:
+  name: testserver
+  enabled: False
