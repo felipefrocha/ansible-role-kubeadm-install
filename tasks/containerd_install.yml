@@ -90,5 +90,12 @@
         group: root
         mode: 0644
   rescue:
-    - shell: containerd config default > /etc/containerd/config.toml
+    - name: Template for Networking Config
+      ansible.builtin.template:
+        src: containerd.toml.j2
+        dest: "/etc/containerd/config.toml"
+        owner: root
+        group: root
+        mode: 0644
+
   
